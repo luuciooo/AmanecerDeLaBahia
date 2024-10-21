@@ -1,9 +1,12 @@
-import { Home } from "./Pages/Home"
+import { MainLayaout } from "./layouts/MainLayaout"
+import Theme from './styles/Theme';
 
 export const App = () => {
     return (
         <>
-            <Home />
+            <Theme>
+                <MainLayaout />
+            </Theme>
         </>
     )
 }

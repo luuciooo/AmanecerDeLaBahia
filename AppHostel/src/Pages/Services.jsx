@@ -1,10 +1,10 @@
-const Home = () => {
+const Services = () => {
     return (
         <>
-            <h1>Hostel</h1>
+            <h1>Servicios</h1>
             <p>Nueva pagina pa Amanece de la Bahia</p>
         </>
     )
 }
 
-export default Home
+export default Services
