@@ -4,7 +4,7 @@ const Footer = () => {
     return (
         <Box component="footer" sx={{ backgroundColor: '#212121', color: '#ffffff', py: 4 }}>
             <Container maxWidth="lg">
-                <Grid container spacing={4} justifyContent="center">
+                <Grid container spacing={4} justifyContent="space-around">
                     <Grid item xs={12} sm={6} md={3}>
                         <Typography variant="h6" gutterBottom>
                             Hostel Name
