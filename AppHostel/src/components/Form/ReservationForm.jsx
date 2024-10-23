@@ -7,10 +7,10 @@ const ReservationForm = () => {
         <Box
             sx={{
                 position: 'absolute',
-                bottom: '20px',
-                left: '50%',
+                bottom: '5%',
+                left: '60%',
                 transform: 'translateX(-50%)',
-                width: '80%',
+                width: '65%',
                 maxWidth: '700px',
                 backgroundColor: theme.palette.background.default,
                 padding: '20px',
@@ -32,14 +32,12 @@ const ReservationForm = () => {
                     InputLabelProps={{ shrink: true }}
                 />
                 <TextField label="Number of People" type="number" fullWidth />
-                <Stack direction="row" spacing={2}>
-                    <Button variant="outlined" fullWidth>
-                        Borrar
-                    </Button>
-                    <Button variant="contained" color="primary" fullWidth>
-                        Reservar
-                    </Button>
-                </Stack>
+                <Button variant="outlined" fullWidth>
+                    Borrar
+                </Button>
+                <Button variant="contained" color="primary" fullWidth>
+                    Reservar
+                </Button>
             </Stack>
         </Box>
     );

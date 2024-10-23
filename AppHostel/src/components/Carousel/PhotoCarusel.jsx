@@ -1,39 +1,52 @@
-import { Box } from '@mui/material';
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import ReservationForm from '../Form/ReservationForm';
+import { useState, useEffect } from 'react';
+import { Box } from '@mui/material'; 
+
+const images = [
+    '/hostel/pexels-gabii-fernandez-199438359-11545137.jpg',
+    '/hostel/pexels-isis-petroni-280715053-13142809.jpg',
+    '/hostel/pexels-uncachitodezoom-308724636-13508592.jpg',
+];
 
 const PhotoCarousel = () => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentIndex(prevIndex => (prevIndex + 1) % images.length);
+        }, 7000); // Cambia la imagen cada 7 segundos
+
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <Box sx={{ position: 'relative', width: '100%', minHeight: '100vh', overflow: 'hidden' }}>
-            <Carousel 
-                showThumbs={false} 
-                autoPlay 
-                infiniteLoop 
-            >
-                <div style={{ height: '100vh', display: 'flex', alignItems: 'center' }}>
-                    <img 
-                        src="../../../public/hostel/pexels-gabii-fernandez-199438359-11545137.jpg" 
-                        alt="Slide 1" 
-                        style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+            {images.map((image, index) => (
+                <Box
+                    key={index}
+                    sx={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        opacity: currentIndex === index ? 1 : 0,
+                        transition: 'opacity 2s ease-in-out, filter 2s ease-in-out',
+                        willChange: 'opacity, filter',
+                    }}
+                >
+                    <img
+                        src={image}
+                        alt={`carousel-img-${index}`}
+                        style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                            filter: currentIndex === index ? 'none' : 'blur(2px)',
+                            transition: 'filter 2s ease-in-out',
+                        }}
                     />
-                </div>
-                <div style={{ height: '100vh', display: 'flex', alignItems: 'center' }}>
-                    <img 
-                        src="../../../public/hostel/pexels-isis-petroni-280715053-13142809.jpg" 
-                        alt="Slide 2" 
-                        style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-                    />
-                </div>
-                <div style={{ height: '100vh', display: 'flex', alignItems: 'center' }}>
-                    <img 
-                        src="../../../public/hostel/pexels-uncachitodezoom-308724636-13508592.jpg" 
-                        alt="Slide 3" 
-                        style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-                    />
-                </div>
-            </Carousel>
-            <ReservationForm />
+                </Box>
+            ))}
         </Box>
     );
 };

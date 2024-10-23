@@ -7,7 +7,6 @@ import DescubreUshuaia from "../pages/DiscoverUshuaia";
 import UbicacionYContacto from "../pages/LocationAndContact";
 import Servicios from "../pages//Services";
 import Reseñas from "../pages/Reviews";
-import { Box } from "@mui/material";
 
 
 export const MainLayaout = () => {
@@ -39,7 +38,7 @@ export const MainLayaout = () => {
         <>
             <Header onMenuOptionChange={handleMenuOptionChange} />
             {renderContent()}
-            <Footer></Footer>
+            <Footer/>
         </>
     )
 }
