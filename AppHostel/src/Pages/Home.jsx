@@ -1,19 +1,27 @@
-import Bienvenida from "../components/Bienvenida"
+import Bienvenida from "../components/Home/Bienvenida"
 import SocialButtons from "../components/Buttons/SocialButtons"
 import PhotoCarousel from "../components/Carousel/PhotoCarusel"
-import ExploraUshuaia from "../components/ExploraUshuaia"
+import ExploraUshuaia from "../components/Home/ExploraUshuaia"
 import ReservationForm from "../components/Form/ReservationForm"
-import HabitacionesConfortables from "../components/HabitacionesConfortables"
-import ServiciosComodidades from "../components/ServiciosComodidades"
+import HabitacionesConfortables from "../components/Home/HabitacionesConfortables"
+import ServiciosComodidades from "../components/Home/ServiciosComodidades"
+import { useVisible } from "../hooks/useVisible"
+import DividerBar from "../components/Others/Divider"
 
 const Home = () => {
+    const isVisible = useVisible();
     return (
         <>
             <PhotoCarousel />
-            <SocialButtons />
-            <ReservationForm />
+            {isVisible && (
+                <>
+                    <SocialButtons />
+                    <ReservationForm />
+                </>
+            )}
+            <DividerBar />
             <Bienvenida />
-            <HabitacionesConfortables/>
+            <HabitacionesConfortables />
             <ServiciosComodidades />
             <ExploraUshuaia />
         </>

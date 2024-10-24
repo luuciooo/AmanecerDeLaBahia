@@ -19,7 +19,8 @@ const PhotoCarousel = () => {
     }, []);
 
     return (
-        <Box sx={{ position: 'relative', width: '100%', minHeight: '100vh', overflow: 'hidden' }}>
+        <Box sx={{ position: 'relative', width: '100%', minHeight: '100vh', overflow: 'hidden' ,marginBottom: '40px', // Ajusta el valor según el espacio que desees
+            boxShadow: '0 10px 20px 0 #eea56d'}}>
             {images.map((image, index) => (
                 <Box
                     key={index}
