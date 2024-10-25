@@ -7,38 +7,43 @@ import 'swiper/css/effect-cards';
 
 // import required modules
 import { EffectCards } from 'swiper/modules';
+import { Card, CardContent, CardMedia, Typography, useTheme } from '@mui/material';
 
 const HabitacionesConfortables = () => {
-    const swiperStyles = {
-        width: '240px',
-        height: '320px',
-    };
+    const theme = useTheme(); // Obtener el theme de Material UI
 
-    const slideStyles = {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: '18px',
-        fontSize: '22px',
-        fontWeight: 'bold',
-        color: '#fff',
-    };
-
-    const slideColors = [
-        'rgb(206, 17, 17)',    // 1st slide
-        'rgb(0, 140, 255)',    // 2nd slide
-        'rgb(10, 184, 111)',   // 3rd slide
-        'rgb(211, 122, 7)',    // 4th slide
-        'rgb(118, 163, 12)',   // 5th slide
-        'rgb(180, 10, 47)',    // 6th slide
-        'rgb(35, 99, 19)',     // 7th slide
-        'rgb(0, 68, 255)',     // 8th slide
-        'rgb(218, 12, 218)',   // 9th slide
-        'rgb(54, 94, 77)',     // 10th slide (if any more slides)
+    // Información de cada slide, incluyendo el color
+    const slidesData = [
+        {
+            title: 'Habitación Confortable 1',
+            description: 'Nuestras habitaciones están diseñadas para satisfacer tus necesidades, con camas cómodas, baño privado, TV por cable y Wi-Fi gratuito.',
+            imageAlt: 'Habitación confortable 1',
+            backgroundColor: theme.palette.primary.main, // Color primario
+        },
+        {
+            title: 'Habitación Confortable 2',
+            description: 'Relájate en nuestras cómodas habitaciones con baño privado, aire acondicionado y una hermosa vista al jardín.',
+            imageAlt: 'Habitación confortable 2',
+            backgroundColor: theme.palette.secondary.main, // Color secundario
+        },
+        {
+            title: 'Habitación Confortable 3',
+            description: 'Disfruta de habitaciones espaciosas, decoradas con un estilo moderno y equipadas con todas las comodidades.',
+            imageAlt: 'Habitación confortable 3',
+            backgroundColor: theme.palette.accent.main, // Color de acento
+        },
     ];
+
+    const swiperStyles = {
+        width: '80vw',
+        height: '70vh',
+    };
 
     return (
         <>
+        <Typography variant="h3" component="div" sx={{margin:'10vh 5vw 5vh 5vw', color: theme.palette.primary.main}}>
+            Habitaciones disponibles
+        </Typography>
             <Swiper
                 effect={'cards'}
                 grabCursor={true}
@@ -46,12 +51,25 @@ const HabitacionesConfortables = () => {
                 className="mySwiper"
                 style={swiperStyles}
             >
-                {slideColors.map((color, index) => (
-                    <SwiperSlide
-                        key={index}
-                        style={{ ...slideStyles, backgroundColor: color }}
-                    >
-                        Slide {index + 1}
+                {slidesData.map((slide, index) => (
+                    <SwiperSlide key={index} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '18px', backgroundColor: `${slide.backgroundColor}90` }}>
+                        <Card sx={{ display: 'flex', flexDirection: 'column', width: '92%', height: '95%', borderRadius: '16px', justifyContent: 'center', backgroundColor: 'transparent' }}>
+                            <CardMedia
+                                component="img"
+                                height="70%"
+                                image="https://via.placeholder.com/400" // URL de la imagen (puedes reemplazar con una URL real)
+                                alt={slide.imageAlt}
+                                sx={{ borderTopLeftRadius: '16px', borderTopRightRadius: '16px', objectFit: 'cover' }} // Ajustar imagen
+                            />
+                            <CardContent sx={{ height: "30%", backgroundColor: slide.backgroundColor, color: '#fff', textAlign: 'center' }}>
+                                <Typography variant="h5" component="div">
+                                    {slide.title}
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                    {slide.description}
+                                </Typography>
+                            </CardContent>
+                        </Card>
                     </SwiperSlide>
                 ))}
             </Swiper>

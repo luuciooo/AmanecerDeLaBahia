@@ -17,7 +17,7 @@ const Bienvenida = () => {
                 color: '#fff',
                 textAlign: 'center',
                 padding: 2,
-                margin: '20px auto',
+                margin: '10vh auto',
                 border: `5px solid ${theme.palette.primary.main}`,
                 borderRadius: '20px',
                 boxShadow: `0 10px 20px 0 ${theme.palette.secondary.main}`,
