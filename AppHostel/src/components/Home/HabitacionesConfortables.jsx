@@ -41,7 +41,7 @@ const HabitacionesConfortables = () => {
 
     return (
         <>
-        <Typography variant="h3" component="div" sx={{margin:'10vh 5vw 10vh 5vw', color: theme.palette.primary.main}}>
+        <Typography variant="h3" component="div" sx={{margin:'10vh 5vw 10vh 5vw', color: theme.palette.primary.main, textAlign:'center'}}>
             Habitaciones disponibles
         </Typography>
             <Swiper
